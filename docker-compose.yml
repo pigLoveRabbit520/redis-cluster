@@ -1,0 +1,59 @@
+version: '2'
+services:
+  redis1:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis1/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis1/data:/data
+    ports: 
+      - 6456:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ] 
+  redis2:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis2/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis2/data:/data
+    ports: 
+      - 6457:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+  redis3:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis3/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis3/data:/data
+    ports: 
+      - 6458:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+  redis4:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis4/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis4/data:/data
+    ports: 
+      - 6459:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+  redis5:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis5/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis5/data:/data
+    ports: 
+      - 6460:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+  redis6:
+    image: redis:4.0-alpine
+    volumes:
+      - ./redis6/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis6/data:/data
+    ports: 
+      - 6461:6379
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+  cli:
+    build: ./cli
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
+      - redis4
+      - redis5
+      - redis6
